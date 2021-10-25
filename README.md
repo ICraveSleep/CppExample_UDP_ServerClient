@@ -16,7 +16,7 @@ The project uses CMake, and in order to build the server and client perform the 
 
         make
 
-Inside the build folder the two application server and client will be present, if the building proccess succeeded. Run the binaries with
+Inside the build folder, the two application server and client will be present, if the building proccess succeeded. Run the binaries with
 
     ./server <Port>
 
