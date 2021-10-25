@@ -6,15 +6,15 @@ The project uses CMake, and in order to build the server and client perform the 
 
 1. Create a build folder
     
-    mkdir build
+        mkdir build
 
 2. Inside the build folder run
 
-    cmake ..
+        cmake ..
 
 3. Still inside the build folder run
 
-    make
+        make
 
 Inside the build folder the two application server and client will be present, if the building proccess succeeded. Run the binaries with
 
