@@ -50,5 +50,5 @@ int main(int argc, char *argv[])
      if (n < 0) error("ERROR writing to socket");
      close(newsockfd);
      close(sockfd);
-     return 0; 
+     return 0;
 }

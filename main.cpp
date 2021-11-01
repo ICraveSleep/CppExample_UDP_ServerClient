@@ -6,10 +6,13 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <iostream>
+#include <bitset>
+#include <cstdint>
+#include <cstring>
 
 
 int main(){
-    int PORT = 22001;
+    int PORT = 22002;
     int MAXLINE = 10000;
     int buff_size = 64;
     char buffer[buff_size]{};
@@ -34,25 +37,38 @@ int main(){
     
     socklen_t s_len = len;
     // bzero(buffer, buff_size);
-    int n = recvfrom(listenfd, buffer, sizeof(buffer),
+
+    while(1){
+        int n = recvfrom(listenfd, buffer, sizeof(buffer),
             0, (struct sockaddr*)&cliaddr,&s_len); //receive message from server
     buffer[n] = '\0';
     std::cout << "N is: " << n << std::endl;
-    for (int i = 0; i < buff_size; i++){
+    // for (int i = 0; i < buff_size; i++){
+    for (int i = 0; i < 5; i++){
         // array[i] = ntohl(buffer[i]) ;
-        std::cout << "array[" << i << "]=" << +buffer[i] << " ";
-        // std::cout << "array[" << i << "] = " << +array[i];
-        if(i % 10 == 1 && i != 1){
-            std::cout << std::endl;
-        }
+        // std::cout << "array[" << i << "]=" << +buffer[i] << " ";
+        // // std::cout << "array[" << i << "] = " << +array[i];
+        // if(i % 10 == 1 && i != 1){
+        //     std::cout << std::endl;
+        // }
+        uint8_t a = uint8_t(buffer[i]);
+        std::bitset<8> x(a);
+        std::cout << x << std::endl;
         
      }
     puts(buffer);
-    printf("Here is the message: %s\n",buffer);
-           
+    // printf("Here is the message: %s\n",buffer);
+    printf("Here is the message: %i\n",buffer[0]);
+    
+    float f;
+    char b[] = {buffer[0], buffer[1], buffer[2], buffer[3]};
+    memcpy(&f, &b, sizeof(f));
+    std::cout << "Constructed float: " << f << std::endl;
     // send the response
     // sendto(listenfd, message, MAXLINE, 0,
     //       (struct sockaddr*)&cliaddr, sizeof(cliaddr));
 
     std::cout << "Got message" << std::endl;
+    }
+    
 }
