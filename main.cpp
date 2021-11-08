@@ -56,14 +56,13 @@ int main(){
         std::cout << x << std::endl;
         
      }
-    puts(buffer);
-    // printf("Here is the message: %s\n",buffer);
-    printf("Here is the message: %i\n",buffer[0]);
+    // puts(buffer);
+    // printf("Here is the message: %i\n",buffer[0]);
     
     float f;
     char b[] = {buffer[0], buffer[1], buffer[2], buffer[3]};
     memcpy(&f, &b, sizeof(f));
-    std::cout << "Constructed float: " << f << std::endl;
+    std::cout << "Constructed float: " << f << " Pole angle [rad]" << std::endl;
     // send the response
     // sendto(listenfd, message, MAXLINE, 0,
     //       (struct sockaddr*)&cliaddr, sizeof(cliaddr));
